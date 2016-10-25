@@ -52,7 +52,7 @@ function render(data) {
     console.log(data);
     queryResults.innerHTML = "";
 
-    if (data.error || 0 == data.track.items.length) {
+    if (data.error || 0 == data.tracks.items.length) {
         renderError(data.error || new Error("No results found"));
     } else {
         data.tracks.items.forEach(renderTrack);
