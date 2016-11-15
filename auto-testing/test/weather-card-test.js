@@ -9,3 +9,17 @@ var sampleData = {
     "name":"Seattle"
 };
 
+describe("WeatherCard Component", function() {
+    it("should render with a loading message with no data", function() {
+        var emptyData = {};
+        var wrapper = shallow(<WeatherCard data={emptyData} fahrenheit={true}/>);
+        expect(wrapper.find(".loading-text")).to.have.length(1);
+        expect(wrapper.find(".loading-text").text()).to.equal("Loading");
+    });
+
+    it("should should render a card with sample data", function() {
+        var wrapper = shallow(<WeatherCard data={sampleData} fahrenheit={true}/>);
+        expect(wrapper.find(".weather-card")).to.have.length(1);
+        expect(wrapper.find(".city-name").text()).to.equal(sampleData.name);
+    });
+});
